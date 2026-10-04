@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday, Feny!</title>
+
+  <!-- This script pulls in Tailwind CSS for styling -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- These are for the animations and photo gallery -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.1/css/lightgallery.min.css" />
+
+  <!-- Google Fonts for the Anime look -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Link to your new external CSS file -->
+  <link rel="stylesheet" href="style.css">
+  <!-- IMPORTANT: Replace with a real image link after you upload it -->
+  <meta property="og:image" content="https://placehold.co/1200x630/87CEEB/FFFFFF?text=A+Surprise+For+Feny">
+</head>
+<body>
+<div id="auth-gate" class="auth-gate">
+  <div class="auth-card">
+    <div class="auth-badge">🔒 Private Access</div>
+    <h2>Enter your access details</h2>
+    <form id="auth-form" class="auth-form">
+      <label>
+        <span>Username</span>
+        <input id="username" type="text" autocomplete="username" placeholder="Enter username" required>
+      </label>
+      <label>
+        <span>Password</span>
+        <input id="password" type="password" autocomplete="current-password" placeholder="Enter password" required>
+      </label>
+      <button type="submit">Unlock page</button>
+      <p id="auth-error" class="auth-error" aria-live="polite"></p>
+    </form>
+  </div>
+</div>
+
+<div id="app-shell" class="hidden">
+<audio id="bg-music" autoplay loop playsinline preload="auto">
+  <source src="img/birthday.mp3" type="audio/mpeg">
+  Your browser does not support the audio tag.
+</audio>
+
+<button id="music-toggle" aria-label="Toggle music" class="fixed bottom-5 right-5 z-50 flex items-center justify-center h-14 w-14 rounded-full bg-white/80 text-pink-500 shadow-lg backdrop-blur-md border border-pink-200 transition hover:scale-105">
+  <svg id="music-icon-play" xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
+  <svg id="music-icon-pause" xmlns="http://www.w3.org/2000/svg" class="hidden h-7 w-7" viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zm8 0h4v14h-4z" /></svg>
+</button>
+
+<!-- Canvas for the falling cherry blossoms -->
+<canvas id="sakura-canvas"></canvas>
+
+<!-- Section 1: Hero Welcome -->
+<header class="hero-image-bg h-screen relative flex items-center justify-center text-white overflow-hidden">
+  <div class="absolute inset-0 bg-black bg-opacity-30"></div>
+
+  <div class="text-center z-10 p-4 mt-[30%] md:mt-[20%]" data-aos="fade-in" data-aos-duration="1500">
+    <div class="mb-3 text-3xl md:text-5xl tracking-[0.4em] text-pink-200"></div>
+    <h1 class="text-5xl md:text-7xl font-anime drop-shadow-lg">Happy Birthday, Feny💖</h1>
+    <p class="mt-4 text-xl font-semibold">To the girl who makes my world feel like home</p>
+    <div id="countdown" class="mt-6 text-2xl font-semibold tracking-widest leading-relaxed"></div>
+  </div>
+</header>
+
+<!-- Main Content -->
+<main class="container mx-auto p-6 md:p-12">
+
+  <section class="my-16 md:my-24 max-w-3xl mx-auto text-center" data-aos="fade-up">
+    <div class="mb-4 text-4xl md:text-5xl">💞💘💞</div>
+    <h2 class="text-4xl md:text-5xl font-anime text-sakura mb-8 drop-shadow-sm heart-line">A Love Letter For My Girl</h2>
+    <div class="text-left text-lg leading-relaxed space-y-4 glass-card p-8 rounded-3xl shadow-2xl border border-pink-100">
+      <p>Hey Falki,</p>
+      <p>Happy Birthday, my beautiful girl! Every year with you feels like a blessing, and every moment with you feels like a little love story I never want to end. From college in 2019 to where we are now, you have been the sweetest part of my life and the brightest light in my days.</p>
+      <p>You are the kind of person who makes ordinary moments feel magical. Your smile makes my heart calm, your laughter makes everything better, and your love makes life feel warmer, softer, and more beautiful. You are funny, kind, graceful, and so deeply special to me.</p>
+      <p>Thank you for being my comfort, my happiness, my peace, and my favorite person. You have made my world so much better just by being in it. I hope this new chapter of your life brings you endless joy, beautiful memories, love, success, and the kind of happiness you truly deserve.</p>
+      <p>Feny, you are my favorite person, my forever smile, and my safest place. I love you more than words can say, and I am so lucky to call you mine.</p>
+      <p class="text-right mt-8 font-semibold text-pink-500">
+        With all my love,<br>
+        Your one and only
+      </p>
+    </div>
+  </section>
+
+  <section class="my-16 md:my-24">
+    <h2 class="text-4xl md:text-5xl font-anime text-center mb-12" data-aos="fade-up">Our Love Story</h2>
+    <div class="space-y-16">
+      <div class="flex flex-col md:flex-row items-center gap-8 memory-card bg-white/80 p-6 rounded-3xl shadow-lg" data-aos="fade-right">
+        <img src="img/20230527_143449.jpg" alt="Feny story 1" class="w-full md:w-1/2 rounded-2xl shadow-xl border-4 border-white h-[320px] photo-fit">
+        <div class="text-center md:text-left max-w-xl">
+          <h3 class="text-2xl font-anime text-sakura">The Day My Heart Chose You</h3>
+          <p class="mt-3 text-lg leading-relaxed">Since college in 2019, every chapter with you has felt special. You became the sweetest part of my memories, and my favorite person in every season of life.</p>
+        </div>
+      </div>
+
+      <div class="flex flex-col md:flex-row-reverse items-center gap-8 memory-card bg-white/80 p-6 rounded-3xl shadow-lg" data-aos="fade-left">
+        <img src="img/20241220_114455.jpg" alt="Feny story 2" class="w-full md:w-1/2 rounded-2xl shadow-xl border-4 border-white h-[320px] photo-fit">
+        <div class="text-center md:text-right max-w-xl">
+          <h3 class="text-2xl font-anime text-sakura">Your Love Feels Like Home</h3>
+          <p class="mt-3 text-lg leading-relaxed">Your kindness, your warmth, and the way you love have made my life calmer, happier, and more beautiful. Being with you feels like peace.</p>
+        </div>
+      </div>
+
+      <div class="flex flex-col md:flex-row items-center gap-8 memory-card bg-white/80 p-6 rounded-3xl shadow-lg" data-aos="fade-right">
+        <img src="img/20250830_132107.jpg" alt="Feny story 3" class="w-full md:w-1/2 rounded-2xl shadow-xl border-4 border-white h-[320px] photo-fit">
+        <div class="text-center md:text-left max-w-xl">
+          <h3 class="text-2xl font-anime text-sakura">The Spark in My Life</h3>
+          <p class="mt-3 text-lg leading-relaxed">You bring laughter, comfort, and a kind of magic that makes even the simplest moments unforgettable. You are my favorite smile and my favorite person.</p>
+        </div>
+      </div>
+
+      <div class="flex flex-col md:flex-row-reverse items-center gap-8 memory-card bg-white/80 p-6 rounded-3xl shadow-lg" data-aos="fade-left">
+        <img src="img/IMG-20230502-WA0004.jpg" alt="Feny story 4" class="w-full md:w-1/2 rounded-2xl shadow-xl border-4 border-white h-[320px] photo-fit">
+        <div class="text-center md:text-right max-w-xl">
+          <h3 class="text-2xl font-anime text-sakura">My Forever Favorite</h3>
+          <p class="mt-3 text-lg leading-relaxed">You are my sweetest dream, my calmest peace, and my biggest blessing. I am so grateful for you, and I hope this birthday reminds you how deeply you are loved.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="my-16 md:my-24">
+    <h2 class="text-4xl md:text-5xl font-anime text-center mb-12" data-aos="fade-up">Moments We Love</h2>
+    <div class="relative">
+      <button id="scroll-left-btn" class="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-white/80 hover:bg-white rounded-full p-2 shadow-md transition-opacity opacity-0 md:opacity-100">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-sakura" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+      </button>
+      <button id="scroll-right-btn" class="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white/80 hover:bg-white rounded-full p-2 shadow-md transition-opacity opacity-0 md:opacity-100">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-sakura" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+      </button>
+
+      <div id="hall-of-fame-scroller" class="flex overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-hide p-4 -mx-4">
+        <div class="flex snap-x snap-mandatory gap-5 md:gap-8">
+          <div class="snap-center flex-shrink-0 w-[85vw] max-w-[320px] sm:w-[45vw] md:w-1/3 lg:w-1/4" data-aos="fade-up" data-aos-delay="100">
+            <div class="bg-white p-4 sm:p-6 rounded-3xl shadow-lg text-center h-full memory-card">
+              <img src="img/wl1.jpg" alt="Feny memory 1" class="w-full h-64 sm:h-80 rounded-2xl mb-4 photo-fit">
+              <h3 class="text-xl sm:text-2xl font-anime text-sakura">Pure Smile</h3>
+              <p class="mt-2 text-sm sm:text-base">“The kind of smile that makes everyone feel happy.”</p>
+            </div>
+          </div>
+
+          <div class="snap-center flex-shrink-0 w-[85vw] max-w-[320px] sm:w-[45vw] md:w-1/3 lg:w-1/4" data-aos="fade-up" data-aos-delay="200">
+            <div class="bg-white p-4 sm:p-6 rounded-3xl shadow-lg text-center h-full memory-card">
+              <img src="img/wl2.jpg" alt="Feny memory 2" class="w-full h-64 sm:h-80 rounded-2xl mb-4 photo-fit">
+              <h3 class="text-xl sm:text-2xl font-anime text-sakura">Sweet Vibe</h3>
+              <p class="mt-2 text-sm sm:text-base">“Your calm and beautiful energy is unforgettable.”</p>
+            </div>
+          </div>
+
+          <div class="snap-center flex-shrink-0 w-[85vw] max-w-[320px] sm:w-[45vw] md:w-1/3 lg:w-1/4" data-aos="fade-up" data-aos-delay="300">
+            <div class="bg-white p-4 sm:p-6 rounded-3xl shadow-lg text-center h-full memory-card">
+              <img src="img/wl3.jpg" alt="Feny memory 3" class="w-full h-64 sm:h-80 rounded-2xl mb-4 photo-fit">
+              <h3 class="text-xl sm:text-2xl font-anime text-sakura">Warm Heart</h3>
+              <p class="mt-2 text-sm sm:text-base">“You make kindness look effortless.”</p>
+            </div>
+          </div>
+
+          <div class="snap-center flex-shrink-0 w-[85vw] max-w-[320px] sm:w-[45vw] md:w-1/3 lg:w-1/4" data-aos="fade-up" data-aos-delay="400">
+            <div class="bg-white p-4 sm:p-6 rounded-3xl shadow-lg text-center h-full memory-card">
+              <img src="img/wl4.jpg" alt="Feny memory 4" class="w-full h-64 sm:h-80 rounded-2xl mb-4 photo-fit">
+              <h3 class="text-xl sm:text-2xl font-anime text-sakura">Grace</h3>
+              <p class="mt-2 text-sm sm:text-base">“You carry beauty and elegance in every way.”</p>
+            </div>
+          </div>
+
+          <div class="snap-center flex-shrink-0 w-[85vw] max-w-[320px] sm:w-[45vw] md:w-1/3 lg:w-1/4" data-aos="fade-up" data-aos-delay="500">
+            <div class="bg-white p-4 sm:p-6 rounded-3xl shadow-lg text-center h-full memory-card">
+              <img src="img/wl5.jpg" alt="Feny memory 5" class="w-full h-64 sm:h-80 rounded-2xl mb-4 photo-fit">
+              <h3 class="text-xl sm:text-2xl font-anime text-sakura">Sparkle</h3>
+              <p class="mt-2 text-sm sm:text-base">“Your presence makes life more colorful.”</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="my-16 md:my-24">
+    <h2 class="text-4xl md:text-5xl font-anime text-center mb-12" data-aos="fade-up">The Feny Collection</h2>
+    <div id="lightgallery" class="grid grid-cols-2 md:grid-cols-4 gap-4"></div>
+  </section>
+
+  <section class="my-16 md:my-24" data-aos="fade-up">
+    <div class="max-w-4xl mx-auto rounded-[2rem] shadow-2xl overflow-hidden bg-navy p-8 md:p-12 text-center text-white">
+      <span class="finale-badge inline-block px-5 py-2 rounded-full text-sm font-semibold uppercase tracking-[0.2em]">My Love, My Forever</span>
+      <h2 class="text-4xl md:text-6xl font-anime mt-8 mb-6">Happy Birthday, Feny</h2>
+      <p class="text-lg md:text-xl leading-relaxed text-pink-100">You are my favorite person, my comfort, and my sweetest happiness. Thank you for being the love of my life and making every ordinary day feel special. May your dreams grow, your heart stay peaceful, and your life be filled with endless love, laughter, and beautiful memories.</p>
+      <p class="mt-6 text-2xl font-semibold text-pink-200">I love you more than words can say.</p>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="bg-navy text-white p-8 text-center">
+  <p>Enjoy your day to the fullest.</p>
+  <p class="text-sm opacity-70 mt-2">Hope you liked it...</p>
+</footer>
+</div>
+
+<!-- These scripts are for the animations and photo gallery -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.1/lightgallery.min.js"></script>
+
+<!-- Link to your new external JavaScript file -->
+<script src="script.js"></script>
+</body>
+</html>

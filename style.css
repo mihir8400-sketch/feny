@@ -1,0 +1,192 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(180deg, #fff7fb 0%, #fdf2f8 32%, #fffaf0 100%);
+    color: #2d1b2f;
+    scroll-behavior: smooth;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.auth-gate {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at top, #f9d7e6 0%, #f7d0dd 18%, #3b2139 100%);
+    z-index: 1000;
+}
+
+.auth-card {
+    width: min(90vw, 420px);
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 24px;
+    box-shadow: 0 25px 60px rgba(41, 19, 34, 0.3);
+    padding: 28px 24px;
+    color: #3d1d2b;
+}
+
+.auth-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: #f9d7e6;
+    color: #7a2148;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.auth-card h2 {
+    margin-top: 16px;
+    font-size: clamp(1.8rem, 3vw, 2.2rem);
+    font-weight: 700;
+    font-family: 'Mochiy Pop One', sans-serif;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.auth-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-weight: 600;
+}
+
+.auth-form input {
+    border: 1px solid #e7bfd0;
+    border-radius: 12px;
+    padding: 12px 14px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.auth-form input:focus {
+    border-color: #e76aa5;
+    box-shadow: 0 0 0 4px rgba(231, 106, 165, 0.14);
+}
+
+.auth-form button {
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #ef7aa7 0%, #d84c8f 100%);
+    color: #fff;
+    font-weight: 700;
+    padding: 12px 16px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.auth-form button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 12px 24px rgba(216, 76, 143, 0.25);
+}
+
+.auth-error {
+    min-height: 20px;
+    color: #b42345;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.hero-image-bg {
+    background-image: linear-gradient(rgba(65, 33, 54, 0.35), rgba(65, 33, 54, 0.35)), url('img/IMG_3059.jpg');
+    background-size: cover;
+    background-position: center 38%;
+    background-repeat: no-repeat;
+}
+
+img {
+    object-fit: contain;
+    background-color: #fdf2f8;
+    display: block;
+}
+
+.photo-fit,
+.memory-card img,
+#lightgallery img {
+    object-fit: contain;
+    background-color: #ffffff;
+}
+
+.font-anime {
+    font-family: 'Mochiy Pop One', sans-serif;
+}
+
+.text-sakura {
+    color: #ef7aa7;
+}
+
+.bg-navy {
+    background: linear-gradient(135deg, #2d1d33 0%, #503963 100%);
+}
+
+#sakura-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.hero-glow {
+    box-shadow: 0 0 60px rgba(239, 122, 167, 0.35);
+}
+
+.memory-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.memory-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 25px 50px rgba(111, 72, 114, 0.15);
+}
+
+.heart-line {
+    position: relative;
+    display: inline-block;
+}
+
+.heart-line::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #f9a8d4, #f472b6, #f9a8d4);
+    border-radius: 9999px;
+}
+
+.finale-badge {
+    background: linear-gradient(135deg, #ffd3e5 0%, #f9a8d4 100%);
+    color: #4a2344;
+}
+
